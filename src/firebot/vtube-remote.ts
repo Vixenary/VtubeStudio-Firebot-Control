@@ -1,6 +1,7 @@
 import { IntegrationDefinition, IntegrationManager, ScriptModules } from "@crowbartools/firebot-custom-scripts-types";
 import { ApiClient, IClientCallConfig } from "vtubestudio";
-import * as WebSocket from "ws";
+import * as fs from "fs";
+import { WebSocket } from "ws";
 const EventEmitter = require("events");
 
 import {
@@ -36,7 +37,6 @@ import { logger } from "../logger";
 import { FirebotParameterCategories, FirebotParams } from "@crowbartools/firebot-custom-scripts-types/types/modules/firebot-parameters";
 
 
-let fs: ScriptModules["fs"]
 let vtube: ApiClient;
 let eventManager: ScriptModules["eventManager"];
 let logging: boolean;
@@ -75,11 +75,9 @@ export function initRemote(
     },
     modules: {
         eventManager: ScriptModules["eventManager"];
-        fs: ScriptModules["fs"]
     }
 ) {
     eventManager = modules.eventManager;
-    fs = modules.fs;
     logging = logging ?? false
     maintainConnection(
         ip,

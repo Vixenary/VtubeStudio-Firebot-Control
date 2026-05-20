@@ -92,7 +92,6 @@ const script: Firebot.CustomScript<vTubeParams> = {
     const {
       effectManager,
       eventManager,
-      fs,
       frontendCommunicator,
       replaceVariableManager,
       eventFilterManager,
@@ -109,8 +108,7 @@ const script: Firebot.CustomScript<vTubeParams> = {
         loggingModelOutline: parameters.loggingModelOutline,
       },
       {
-        eventManager,
-        fs
+        eventManager
       }
     );
 
